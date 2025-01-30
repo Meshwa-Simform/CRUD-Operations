@@ -2,6 +2,7 @@
 function readProducts() {
     const mainDiv = document.getElementById('main');
     if(mainDiv){
+        mainDiv.innerHTML = ''; // Clear previous content
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             if (key.startsWith('product_')) {
@@ -27,14 +28,13 @@ function readProducts() {
                     div.innerHTML += `<p style="color:green;text-align:center">In Stock</p>`;
                 }
                 div.querySelector('.update').addEventListener('click', function() {
-                    // upateProduct(data.productId);
-                    // window.href = "/edit.html";
                     window.location.href = `/edit.html?id=${key}`;
                 });
                 div.querySelector('.delete').addEventListener('click', function() {
-                    localStorage.removeItem(key);
-                    div.remove();
-                    window.location.href = '/index.html';
+                    if(confirm('Are you sure you want to delete this product?')){
+                        localStorage.removeItem(key);
+                        div.remove();
+                    }
                 });
                 div.querySelector('.product-data').addEventListener('click', function() {
                     window.location.href = `/product.html?id=${key}`;

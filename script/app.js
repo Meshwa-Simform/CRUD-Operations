@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     createProduct();
-    readProducts();
     filter();
 
     //check if there is data on locak storage 
@@ -72,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };        
         localStorage.setItem(data3.productId, JSON.stringify(data3));
     }
+    readProducts();
 });
 
 function generateUUID() {

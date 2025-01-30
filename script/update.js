@@ -12,6 +12,8 @@ function productdetails(productId) {
             document.getElementById('mfdate').value = data.mfDate;
             document.getElementById('outofStock').checked = data.outOfStock;
             document.getElementById(`${data.pricing}`).checked = true;
+            document.getElementById('productImage').src = data.productImage;
+            var oldProductImage = data.productImage;
 
             // Handle image separately, to display image at side
             const productImage = document.getElementById('productImage');
@@ -32,8 +34,7 @@ function productdetails(productId) {
     document.getElementById('productForm').addEventListener('submit', (event) => {
         event.preventDefault();
         console.log("Form submission triggered");
-        const urlParams = new URLSearchParams(window.location.search);
-    const oldproductId = urlParams.get('id');
+        const oldproductId = productId;
 
     // Capture form values
     const productName = document.getElementById("productName").value;
@@ -59,11 +60,20 @@ function productdetails(productId) {
             alert("Product saved successfully!"); // Show success message
             productForm.reset(); // Clear the form
             localStorage.removeItem(oldproductId);
-            window.location.href = '/index.html';
+            setTimeout(function() {
+                window.location.href = '/'; // Redirect to the homepage after a short delay
+            }, 200);
         };
         reader.readAsDataURL(productImage); // Read image as a base64 URL
     } else {
-        alert("Please add an image");
+        data.productImage = oldProductImage;
+            saveToLocalStorage(data); // Save the data after the image is processed
+            alert("Product saved successfully!"); // Show success message
+            productForm.reset(); // Clear the form
+            localStorage.removeItem(oldproductId);
+            setTimeout(function() {
+                window.location.href = '/index.html'; // Redirect to the homepage after a short delay
+            }, 200);
     }
     });
 }

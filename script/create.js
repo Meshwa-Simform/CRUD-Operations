@@ -29,6 +29,9 @@ function createProduct(){
                     saveToLocalStorage(data); // Save the data after the image is processed
                     alert("Product saved successfully!"); // Show success message
                     productForm.reset(); // Clear the form
+                    setTimeout(function() {
+                        window.location.href = '/index.html'; // Redirect to the homepage after a short delay
+                    }, 200);
                 };
                 reader.readAsDataURL(productImage); // Read image as a base64 URL
             } else {

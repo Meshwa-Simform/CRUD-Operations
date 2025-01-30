@@ -28,10 +28,13 @@ function productdisplay(productId) {
                 window.location.href = `/edit.html?id=${productId}`;
             });
             div.querySelector('.delete').addEventListener('click', function() {
-                confirm('Are you sure you want to delete this product?');
-                localStorage.removeItem(productId);
-                div.remove();
-                window.location.href = '/index.html';
+                if(confirm('Are you sure you want to delete this product?')){
+                    localStorage.removeItem(productId);
+                    div.remove();
+                    setTimeout(function() {
+                        window.location.href = '/'; // Redirect to the homepage after a short delay
+                    }, 200); 
+                }
             });
             mainDiv.appendChild(div);
             console.log(data);
