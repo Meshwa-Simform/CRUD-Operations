@@ -1,6 +1,6 @@
 import { createProduct } from "./create.js";
 import { readProducts } from "./read.js";
-
+import { filter } from "./filter.js";
 
 //vadidate file using mime type
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createProduct();
     readProducts();
+    filter();
 
     //check if there is data on locak storage 
     let hasProduct = false;
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem(data2.productId, JSON.stringify(data2));
         let data3 = {
             productId: `product_${generateUUID()}`,
-            productName: 'Fashion',
+            productName: 'Sneakers',
             price: 3000,
             description: 'These are comfortable shoes, perfect for running and sports activities.',
             category: 'Fashion',
