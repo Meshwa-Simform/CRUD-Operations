@@ -170,6 +170,40 @@ button:hover {
     margin: 10px;
     text-align: left;
 }
+#filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+#filter select{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+#filter #btn{
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #776e6e;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20%;
+}
+#filter #btn:hover{
+    background-color: #575757;
+}
+.price{
+    padding-left: 5%;
+}
+#filterform{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
 
 @media (max-width: 768px) {
     #content {
@@ -184,5 +218,8 @@ button:hover {
     .card {
         width: 100%;
         max-width: 250px;
+    }
+    #filter #btn{
+        margin-left: 0;
     }
 }
