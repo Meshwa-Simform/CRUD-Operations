@@ -170,6 +170,80 @@ button:hover {
     margin: 10px;
     text-align: left;
 }
+.product-data{
+    cursor: pointer;
+}
+#filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+#filter select{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#filter #btn{
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #776e6e;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20%;
+}
+
+#filter #btn:hover{
+    background-color: #575757;
+}
+
+.price{
+    padding-left: 5%;
+}
+
+#filterform{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+#pagination{
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin: 20px;
+}
+
+#pagination #pagebutton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#pagination #pagebutton:hover {
+    background-color: #0056b3;
+}
+
+#pagination #pagebutton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#pagination .active {
+    background-color: #0056b3 !important; 
+    color: white;
+}
 
 @media (max-width: 768px) {
     #content {
