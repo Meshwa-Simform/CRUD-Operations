@@ -2,7 +2,7 @@ export function pagination(){
     const cardsperpage = 6;
     let cards = document.querySelectorAll('.card');
     let paginationdiv = document.getElementById('pages');
-    let nuofpages = Math.ceil(localStorage.length/cardsperpage);
+    let nuofpages = Math.ceil(cards.length / cardsperpage); // Calculate pages based on filtered cards
     let currentPage = 1;
     paginationdiv.innerHTML = '';
 
@@ -10,11 +10,10 @@ export function pagination(){
     let leftButton = document.querySelector('.fa-angle-left');
     let rightButton = document.querySelector('.fa-angle-right');
     
-    
     // Create pagination buttons
-    for(let i=1;i<=nuofpages;i++){
+    for(let i = 1; i <= nuofpages; i++){
         let pages = document.createElement('button');
-        pages.id = 'pagebutton'
+        pages.id = 'pagebutton';
         pages.innerText = i;
         if (i === 1) {
             pages.classList.add('active');

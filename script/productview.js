@@ -12,6 +12,7 @@ function productdisplay(productId) {
             </div>
             <div class="product-details">
                 <h3>${data.productName}</h3>
+                <p>Product ID: ${data.productId}</p>
                 <p>Price: ${data.price}</p>
                 <p>Description: ${data.description}</p>
                 <p>Category: ${data.category}</p>
