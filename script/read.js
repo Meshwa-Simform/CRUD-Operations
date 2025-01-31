@@ -28,7 +28,7 @@ function readProducts() {
                     div.innerHTML += `<p style="color:green;text-align:center">In Stock</p>`;
                 }
                 div.querySelector('.update').addEventListener('click', function() {
-                    window.location.href = `/edit.html?id=${key}`;
+                    window.location.href = `./edit.html?id=${key}`;
                 });
                 div.querySelector('.delete').addEventListener('click', function() {
                     if(confirm('Are you sure you want to delete this product?')){
@@ -37,7 +37,7 @@ function readProducts() {
                     }
                 });
                 div.querySelector('.product-data').addEventListener('click', function() {
-                    window.location.href = `/product.html?id=${key}`;
+                    window.location.href = `./product.html?id=${key}`;
                 });
                 mainDiv.appendChild(div);
                 console.log(data);

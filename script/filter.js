@@ -1,3 +1,5 @@
+import { pagination } from "./pagination";
+
 export function filter() {
     let filterform = document.getElementById('filterform');
     if(filterform){
@@ -45,7 +47,7 @@ export function filter() {
                             div.innerHTML += `<p style="color:green;text-align:center">In Stock</p>`;
                         }
                         div.querySelector('.update').addEventListener('click', function() {
-                            window.location.href = `/edit.html?id=${key}`;
+                            window.location.href = `./edit.html?id=${key}`;
                         });
                         div.querySelector('.delete').addEventListener('click', function() {
                             if(confirm('Are you sure you want to delete this product?')){
@@ -54,7 +56,7 @@ export function filter() {
                             }
                         });
                         div.querySelector('.product-data').addEventListener('click', function() {
-                            window.location.href = `/product.html?id=${key}`;
+                            window.location.href = `./product.html?id=${key}`;
                         });
                         resultsContainer.appendChild(div); // Append the created div to the results container
                     }
@@ -68,4 +70,5 @@ export function filter() {
             document.getElementById('main').style.display = 'none'; // Hide the main container
         });
     }
+    pagination();
 }
