@@ -1,4 +1,4 @@
-import { pagination } from "./pagination";
+import { pagination } from "./pagination.js";
 
 export function filter() {
     let filterform = document.getElementById('filterform');
@@ -7,7 +7,7 @@ export function filter() {
             event.preventDefault();
             const category = document.getElementById('Category').value;
             const price = document.getElementById('Price').value;
-            const resultsContainer = document.getElementById('results'); 
+            const resultsContainer = document.getElementById('main'); 
             resultsContainer.innerHTML = ''; // Clear previous results
             
             let found = false; // Track if any products match the filter
@@ -67,8 +67,7 @@ export function filter() {
                 resultsContainer.innerHTML = '<p>No products found matching the filter criteria.</p>';
             }
 
-            document.getElementById('main').style.display = 'none'; // Hide the main container
+            pagination(); // Call pagination to update the pagination buttons
         });
     }
-    pagination();
 }
