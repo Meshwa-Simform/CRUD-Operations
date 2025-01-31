@@ -48,7 +48,7 @@ export function pagination(){
 
     // Function to display the current page
     function displayPage(pageNumber) {
-        let start = (pageNumber - 1) * cardsperpage;
+        let start = (pageNumber - 1) * cardsperpage;  // Calculate the start and end index of the cards to be displayed
         let end = start + cardsperpage;
         for (let i = 0; i < cards.length; i++) {
             if (i >= start && i < end) {

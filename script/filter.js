@@ -3,7 +3,7 @@ import { pagination } from "./pagination.js";
 export function filter() {
     let filterform = document.getElementById('filterform');
     if(filterform){
-        filterform.addEventListener('submit', function(event){
+        filterform.addEventListener('submit', function(event){ // Add event listener to the filter form
             event.preventDefault();
             const category = document.getElementById('Category').value;
             const price = document.getElementById('Price').value;
@@ -12,12 +12,12 @@ export function filter() {
             
             let found = false; // Track if any products match the filter
 
-            for (let i = 0; i < localStorage.length; i++) {
+            for (let i = 0; i < localStorage.length; i++) { 
                 const key = localStorage.key(i);
                 if (key.startsWith('product_')) {
                     const data = JSON.parse(localStorage.getItem(key));
-                    const matchesCategory = category === 'All' || data.category === category;
-                    const matchesPrice = price === 'All' || (
+                    const matchesCategory = category === 'All' || data.category === category; // Check if the input category matches with data category
+                    const matchesPrice = price === 'All' || (               // Check if the input price matches with data price
                         (price === '0-500' && data.price <= 500) ||
                         (price === '500-1000' && data.price > 500 && data.price <= 1000) ||
                         (price === '1000-5000' && data.price > 1000 && data.price <= 5000) ||
@@ -46,17 +46,17 @@ export function filter() {
                         }else{
                             div.innerHTML += `<p style="color:green;text-align:center">In Stock</p>`;
                         }
-                        div.querySelector('.update').addEventListener('click', function() {
-                            window.location.href = `./edit.html?id=${key}`;
+                        div.querySelector('.update').addEventListener('click', function() { // Add event listener to the update button
+                            window.location.href = `./edit.html?id=${key}`;  // Redirect to the edit page
                         });
-                        div.querySelector('.delete').addEventListener('click', function() {
+                        div.querySelector('.delete').addEventListener('click', function() {  // Add event listener to the delete button
                             if(confirm('Are you sure you want to delete this product?')){
                                 localStorage.removeItem(key);
                                 div.remove();
                             }
                         });
-                        div.querySelector('.product-data').addEventListener('click', function() {
-                            window.location.href = `./product.html?id=${key}`;
+                        div.querySelector('.product-data').addEventListener('click', function() {    // Add event listener to the product to display single product
+                            window.location.href = `./product.html?id=${key}`;  // Redirect to the product page
                         });
                         resultsContainer.appendChild(div); // Append the created div to the results container
                     }

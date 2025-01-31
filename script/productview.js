@@ -6,6 +6,7 @@ function productdisplay(productId) {
             const div = document.createElement('div');
             div.classList.add(`${data.productId}`);
             div.classList.add('product');
+            // Display product details
             div.innerHTML = `
             <div class="product-image">
                 <img src="${data.productImage}" alt="${data.productName}">
@@ -24,10 +25,10 @@ function productdisplay(productId) {
                 <button type="button" class="btn delete">delete</button>
             </div>
             `;
-            div.querySelector('.update').addEventListener('click', function() {
-                window.location.href = `./edit.html?id=${productId}`;
+            div.querySelector('.update').addEventListener('click', function() { // Add event listener to the update button
+                window.location.href = `./edit.html?id=${productId}`;  // Redirect to the edit page
             });
-            div.querySelector('.delete').addEventListener('click', function() {
+            div.querySelector('.delete').addEventListener('click', function() {  // Add event listener to the delete button
                 if(confirm('Are you sure you want to delete this product?')){
                     localStorage.removeItem(productId);
                     div.remove();

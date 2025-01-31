@@ -4,7 +4,7 @@ function productdetails(productId) {
     const productForm = document.getElementById("productForm");
     if (productForm) {
         const data = JSON.parse(localStorage.getItem(productId));
-        if (data) {
+        if (data) {  // Check if the product exists . If it does, pull the data and put it in the form
             document.getElementById('productName').value = data.productName;
             document.getElementById('price').value = data.price;
             document.getElementById('description').value = data.description;
@@ -21,21 +21,49 @@ function productdetails(productId) {
     } else {
         console.error('Product form not found');
     }
+    // Validate the image file type
     const fileInput = document.querySelector('input[type="file"]');
-    if(!fileInput){
+    if (!fileInput) {
         console.log('file input not found');
-    }else{
+    } else {
         fileInput.addEventListener('change', function(event) {
             const file = this.files[0];
-            if (['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
-                console.log('File type is valid.');
-            } else {
-                alert('Please upload a valid image file i.e. JPEG, PNG, JPG');
-                event.target.value = ''; // Clear the input value
-            }
+            const reader = new FileReader();
+    
+            reader.onloadend = function(e) {
+                const arr = (new Uint8Array(e.target.result)).subarray(0, 4);
+                let header = "";
+                for (let i = 0; i < arr.length; i++) {
+                    header += arr[i].toString(16);
+                }
+    
+                let type = "";
+                switch (header) {
+                    case "89504e47":
+                        type = "image/png";
+                        break;
+                    case "ffd8ffe0":
+                    case "ffd8ffe1":
+                    case "ffd8ffe2":
+                        type = "image/jpeg";
+                        break;
+                    default:
+                        type = "unknown";
+                        break;
+                }
+    
+                if (type === "image/jpeg" || type === "image/png") {
+                    console.log('File type is valid.');
+                } else {
+                    alert('Please upload a valid image file.');
+                    event.target.value = ''; // Clear the input value
+                }
+            };
+    
+            reader.readAsArrayBuffer(file);
         });
     }
-    document.getElementById('productForm').addEventListener('submit', (event) => {
+    document.getElementById('productForm').addEventListener('submit', (event) => {  // Add event listener to the form to update the product
         event.preventDefault();
         const oldproductId = productId;
 
