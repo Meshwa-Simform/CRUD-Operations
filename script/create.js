@@ -30,7 +30,7 @@ function createProduct(){
                     alert("Product saved successfully!"); // Show success message
                     productForm.reset(); // Clear the form
                     setTimeout(function() {
-                        window.location.href = '/index.html'; // Redirect to the homepage after a short delay
+                        window.location.href = './index.html'; // Redirect to the homepage after a short delay
                     }, 200);
                 };
                 reader.readAsDataURL(productImage); // Read image as a base64 URL

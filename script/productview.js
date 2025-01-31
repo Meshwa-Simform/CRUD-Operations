@@ -25,14 +25,14 @@ function productdisplay(productId) {
             </div>
             `;
             div.querySelector('.update').addEventListener('click', function() {
-                window.location.href = `/edit.html?id=${productId}`;
+                window.location.href = `./edit.html?id=${productId}`;
             });
             div.querySelector('.delete').addEventListener('click', function() {
                 if(confirm('Are you sure you want to delete this product?')){
                     localStorage.removeItem(productId);
                     div.remove();
                     setTimeout(function() {
-                        window.location.href = '/'; // Redirect to the homepage after a short delay
+                        window.location.href = './'; // Redirect to the homepage after a short delay
                     }, 200); 
                 }
             });

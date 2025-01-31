@@ -1,6 +1,7 @@
 import { createProduct } from "./create.js";
 import { readProducts } from "./read.js";
 import { filter } from "./filter.js";
+import { pagination } from "./pagination.js";
 
 //vadidate file using mime type
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createProduct();
     filter();
 
-    //check if there is data on locak storage 
+    //check if there is data on local storage 
     let hasProduct = false;
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem(data3.productId, JSON.stringify(data3));
     }
     readProducts();
+    pagination();
 });
 
 function generateUUID() {

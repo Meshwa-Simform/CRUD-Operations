@@ -15,16 +15,6 @@ function productdetails(productId) {
             document.getElementById('productImage').src = data.productImage;
             var oldProductImage = data.productImage;
 
-            // Handle image separately, to display image at side
-            const productImage = document.getElementById('productImage');
-            // if (productImage) {
-            //     const imgPreview = document.createElement('img');
-            //     imgPreview.src = data.productImage;
-            //     imgPreview.alt = data.productName;
-            //     imgPreview.style.maxWidth = '100px';
-            //     imgPreview.style.border = '1px solid #ccc';
-            //     productImage.parentNode.insertBefore(imgPreview, productImage.nextSibling);
-            // }
         } else {
             console.error(`No product found with ID: ${productId}`);
         }
@@ -61,7 +51,7 @@ function productdetails(productId) {
             productForm.reset(); // Clear the form
             localStorage.removeItem(oldproductId);
             setTimeout(function() {
-                window.location.href = '/'; // Redirect to the homepage after a short delay
+                window.location.href = './'; // Redirect to the homepage after a short delay
             }, 200);
         };
         reader.readAsDataURL(productImage); // Read image as a base64 URL
@@ -72,7 +62,7 @@ function productdetails(productId) {
             productForm.reset(); // Clear the form
             localStorage.removeItem(oldproductId);
             setTimeout(function() {
-                window.location.href = '/index.html'; // Redirect to the homepage after a short delay
+                window.location.href = './'; // Redirect to the homepage after a short delay
             }, 200);
     }
     });
