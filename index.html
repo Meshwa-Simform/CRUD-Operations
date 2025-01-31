@@ -16,13 +16,43 @@
 </head>
 <body>
     <nav>
-        <a href="/index.html">Home</a>
-        <a href="/add.html">Add Product</a>
+        <a href="./">Home</a>
+        <a href="./add.html">Add Product</a>
     </nav>
 
     <div id="content">
-        <h1>Products</h1>
+        <h1>All Products</h1>
+        <div id="filter">
+            <form id="filterform">
+                <label>Sort by category</label>
+                <select id="Category">
+                    <option value="All">All</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Decor">Decor</option>
+                    <option value="Home & Kitchen">Home & Kitchen</option>
+                    <option value="Toys & Games">Toys & Games</option>
+                </select>
+                <label class="price">Sort by Price</label>
+                <select id="Price">
+                    <option value="All">All</option>
+                    <option value="0-500">0-500</option>
+                    <option value="500-1000">500-1000</option>
+                    <option value="1000-5000">1000-5000</option>
+                    <option value="5000 & above">5000 & above</option>
+                </select>
+                <button id="btn">filter</button>
+            </form>
+        </div>
         <div id="main"></div>
+        <div id="results"></div>
+        <div id="pagination">
+            <button id="pagebutton"><i class="fa-solid fa-angle-left"></i></button>
+            <div id="pages"></div>
+            <button id="pagebutton"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
     </div>
 
     <script type="module" src="script/app.js"></script>
