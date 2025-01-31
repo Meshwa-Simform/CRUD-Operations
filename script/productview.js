@@ -1,5 +1,4 @@
 function productdisplay(productId) {
-    console.log(productId);
     const data = JSON.parse(localStorage.getItem(productId));
     if (data) {
         const mainDiv = document.getElementById('product');
@@ -37,7 +36,6 @@ function productdisplay(productId) {
                 }
             });
             mainDiv.appendChild(div);
-            console.log(data);
             if(data.outOfStock){
                 document.getElementById('ous').style.display = 'block';
             }else{

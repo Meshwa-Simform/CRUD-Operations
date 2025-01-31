@@ -40,7 +40,6 @@ function readProducts() {
                     window.location.href = `./product.html?id=${key}`;
                 });
                 mainDiv.appendChild(div);
-                console.log(data);
             }
         }
     }

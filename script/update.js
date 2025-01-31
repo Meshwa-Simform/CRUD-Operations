@@ -21,9 +21,22 @@ function productdetails(productId) {
     } else {
         console.error('Product form not found');
     }
+    const fileInput = document.querySelector('input[type="file"]');
+    if(!fileInput){
+        console.log('file input not found');
+    }else{
+        fileInput.addEventListener('change', function(event) {
+            const file = this.files[0];
+            if (['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+                console.log('File type is valid.');
+            } else {
+                alert('Please upload a valid image file i.e. JPEG, PNG, JPG');
+                event.target.value = ''; // Clear the input value
+            }
+        });
+    }
     document.getElementById('productForm').addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log("Form submission triggered");
         const oldproductId = productId;
 
     // Capture form values
@@ -37,7 +50,6 @@ function productdetails(productId) {
 
     // Log the collected data
     let data = { 'productId' : `product_${generateUUID()}`, productName, price, description, category, mfDate, pricing, outOfStock };
-    console.log(data);
 
     // Capture image file
     const productImage = document.getElementById("productImage").files[0];
@@ -45,7 +57,6 @@ function productdetails(productId) {
         const reader = new FileReader();
         reader.onload = function(e) {
             data.productImage = e.target.result; // Store base64 image string
-            console.log("Data with image:", data);
             saveToLocalStorage(data); // Save the data after the image is processed
             alert("Product saved successfully!"); // Show success message
             productForm.reset(); // Clear the form
@@ -77,7 +88,6 @@ function generateUUID() {
 function saveToLocalStorage(data) {
     let uniqueKey = `product_${generateUUID()}`;
     localStorage.setItem(uniqueKey, JSON.stringify(data));
-    console.log(`Data saved with key: ${uniqueKey}`);
 }
 
 export { productdetails };

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
                 console.log('File type is valid.');
             } else {
-                alert('Please upload a valid image file.');
+                alert('Please upload a valid image file i.e. JPEG, PNG, JPG');
                 event.target.value = ''; // Clear the input value
             }
         });

@@ -4,7 +4,6 @@ function createProduct(){
     if (productForm) {
         productForm.addEventListener("submit", function(event) {
             event.preventDefault();
-            console.log("Form submission triggered");
 
             // Capture form values
             const productName = document.getElementById("productName").value;
@@ -17,7 +16,6 @@ function createProduct(){
 
             // Log the collected data
             let data = { 'productId' : `product_${generateUUID()}`, productName, price, description, category, mfDate, pricing, outOfStock };
-            console.log(data);
 
             // Capture image file
             const productImage = document.getElementById("productImage").files[0];
@@ -25,7 +23,6 @@ function createProduct(){
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     data.productImage = e.target.result; // Store base64 image string
-                    console.log("Data with image:", data);
                     saveToLocalStorage(data); // Save the data after the image is processed
                     alert("Product saved successfully!"); // Show success message
                     productForm.reset(); // Clear the form
@@ -50,7 +47,6 @@ function generateUUID() {
 function saveToLocalStorage(data) {
     let uniqueKey = `product_${generateUUID()}`;
     localStorage.setItem(uniqueKey, JSON.stringify(data));
-    console.log(`Data saved with key: ${uniqueKey}`);
 }
 
 export { createProduct };
