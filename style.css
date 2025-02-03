@@ -119,8 +119,14 @@ button:hover {
     font-size: 1.5em;
     margin: 10px;
     text-align: left;
+    overflow: hidden;
+    max-height: 28px;
 }
-
+.product-details{
+    max-width: 50%;
+    max-height: 65vh;
+    overflow: auto;
+}
 .card p {
     margin: 0 10px 8px;
     color: #555;
