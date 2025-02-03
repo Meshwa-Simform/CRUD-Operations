@@ -16,7 +16,7 @@
         <h1>Edit Product</h1>
         <form id="productForm" >
             <label>Product Name: <input type="text" id="productName" required></label><br>
-            <label>Price: <input type="number" id="price" min="0.01" required></label><br>
+            <label>Price: <input type="number" id="price" min="1" required></label><br>
             <label>Description: <textarea name="" id="description" required></textarea></label><br>
             <label>Category: 
                 <select name="" id="category">
@@ -30,7 +30,7 @@
                 </select>
             </label><br>
             <label>Manufacturing Date: <input type="date" id="mfdate" max=""></label><br>
-            <label>Pricing Type:</label>
+            <label>selling Type:</label>
             <label>
                 <input type="radio" class="pricing" value="retail" id="retail" name="priceType" required> Retail
             </label>
@@ -38,7 +38,7 @@
                 <input type="radio" class="pricing" value="wholesale" id="wholesale" name="priceType" required> Wholesale
             </label><br>
             <label>Is Out of Stock: <input type="checkbox" id="outofStock"></label><br>
-            <label>Product Image: <input type="file" class="form-control" id="productImage" required="" accept="image/png, image/jpeg, image/jpg"></label><br>
+            <label>Product Image: <input type="file" class="form-control" id="productImage" accept="image/png, image/jpeg, image/jpg"></label><br>
             <button type="submit" >update Product</button>
         </form>
     </div>

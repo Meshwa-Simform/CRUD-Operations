@@ -14,6 +14,16 @@ function productdetails(productId) {
             document.getElementById(`${data.pricing}`).checked = true;
             document.getElementById('productImage').src = data.productImage;
             var oldProductImage = data.productImage;
+            // Handle image separately, to display image at side
+            const productImage = document.getElementById('productImage');
+            if (productImage) {
+                    const imgPreview = document.createElement('img');
+                    imgPreview.src = data.productImage;
+                    imgPreview.alt = data.productName;
+                    imgPreview.style.maxWidth = '100px';
+                    imgPreview.style.border = '1px solid #ccc';
+                    productImage.parentNode.insertBefore(imgPreview, productImage.nextSibling);
+            }
 
         } else {
             console.error(`No product found with ID: ${productId}`);
@@ -77,7 +87,7 @@ function productdetails(productId) {
     const pricing = document.querySelector('input[class="pricing"]:checked').value;
 
     // Log the collected data
-    let data = { 'productId' : `product_${generateUUID()}`, productName, price, description, category, mfDate, pricing, outOfStock };
+    let data = { 'productId' : oldproductId , productName, price, description, category, mfDate, pricing, outOfStock };
 
     // Capture image file
     const productImage = document.getElementById("productImage").files[0];
@@ -85,10 +95,10 @@ function productdetails(productId) {
         const reader = new FileReader();
         reader.onload = function(e) {
             data.productImage = e.target.result; // Store base64 image string
-            saveToLocalStorage(data); // Save the data after the image is processed
+            localStorage.removeItem(oldproductId);
+            localStorage.setItem(oldproductId, JSON.stringify(data)); // Save the data after the image is processed
             alert("Product saved successfully!"); // Show success message
             productForm.reset(); // Clear the form
-            localStorage.removeItem(oldproductId);
             setTimeout(function() {
                 window.location.href = './'; // Redirect to the homepage after a short delay
             }, 200);
@@ -96,26 +106,15 @@ function productdetails(productId) {
         reader.readAsDataURL(productImage); // Read image as a base64 URL
     } else {
         data.productImage = oldProductImage;
-            saveToLocalStorage(data); // Save the data after the image is processed
+            localStorage.removeItem(oldproductId);
+            localStorage.setItem(oldproductId, JSON.stringify(data)); // Save the data after the image is processed
             alert("Product saved successfully!"); // Show success message
             productForm.reset(); // Clear the form
-            localStorage.removeItem(oldproductId);
             setTimeout(function() {
                 window.location.href = './'; // Redirect to the homepage after a short delay
             }, 200);
     }
     });
-}
-
-function generateUUID() {
-    return 'xxxx-xxxx'.replace(/[x]/g, function() {   // '/[x]/'' is a regular expression that matches the character x. g is a flag that means "global," so it will match all occurrences of x in the string, not just the first one.
-        return Math.floor(Math.random() * 16).toString(16);
-    });
-}
-
-function saveToLocalStorage(data) {
-    let uniqueKey = `product_${generateUUID()}`;
-    localStorage.setItem(uniqueKey, JSON.stringify(data));
 }
 
 export { productdetails };
